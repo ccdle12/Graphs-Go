@@ -1,0 +1,3 @@
+# Run Tests.
+check:
+	@go test -v ./...
