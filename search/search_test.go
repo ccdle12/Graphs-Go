@@ -35,11 +35,26 @@ func TestAllVisitedBFS(t *testing.T) {
 	// Create the a graph using the vertices.
 	g := graph.NewGraph(vertices)
 
-	// Create the DFS Struct.
+	// Create the Search Struct.
 	search := New(g)
 
 	// Search using DFS starting at A.
 	if ok := search.BFS(vertices[0]); !ok {
 		t.Fatalf("BFS was unable to visit all nodes")
 	}
+}
+
+// TestBellManford will test the Bellman-Ford
+// algorithm. This is a search algorithm that
+// will determine the shortest path in a graph.
+func TestBallManford(t *testing.T) {
+	// Create the default vertices.
+	vertices := graph.NewVertices()
+
+	// Create the graph using the vertices.
+	g := graph.NewGraph(vertices)
+
+	// Create the Search struct.
+	search := New(g)
+
 }
