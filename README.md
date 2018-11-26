@@ -1,2 +1,3 @@
-main.go Graphs-Go
-graph/graph.go Graphs-Go
+# Graphs-Go
+
+My notes/revision on implementing a graph and search algorithms.
