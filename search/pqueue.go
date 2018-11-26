@@ -20,13 +20,15 @@ func (pq PriorityQueue) Len() int {
 }
 
 // Less is an implementation of the heap.Interface.
+//
 // This determines whether the heap will order the
-// heap from low priority first or high priority.
-// In the case below it will pop the highest
-// priority and subsequently the items with decreasing
-// priority.
+// itmes from low priority first or high priority.
+//
+// In the case below it will pop the lowest
+// priority and subsequently the items  will
+// range from smallest to largest.
 func (pq PriorityQueue) Less(i, j int) bool {
-	return pq[i].priority > pq[j].priority
+	return pq[i].priority < pq[j].priority
 }
 
 func (pq PriorityQueue) Swap(i, j int) {
