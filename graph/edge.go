@@ -5,5 +5,5 @@ package graph
 type Edge struct {
 	From *Vertex
 	To   *Vertex
-	Fee  uint32
+	Fee  int
 }
