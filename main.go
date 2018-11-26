@@ -21,4 +21,8 @@ func main() {
 	fmt.Println("[PERFORMING DEPTH FIRST SEARCH]")
 	search := search.New(graph)
 	search.DFS(graph.Vertices[0])
+
+	// TESTING
+	search.BellManford(graph.Vertices[0])
+	search.Dijkstra(graph.Vertices[0])
 }
