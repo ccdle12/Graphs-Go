@@ -2,6 +2,12 @@ package search
 
 import "fmt"
 
+// MaxUint is the max unsiged integer.
+const MaxUint = ^uint(0)
+
+// MaxInt will be used in graph searches as "Infinite".
+const MaxInt = int(MaxUint >> 1)
+
 // checkAllVisited is a util function, given a cache,
 // it will check against the known existing graph
 // in Search to determine whether all vertices
