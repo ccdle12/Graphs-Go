@@ -9,12 +9,15 @@ import (
 // Vertices.
 type Graph struct {
 	Vertices []*Vertex
+	// Maps the string ID of a vertex to the
+	// vertex object in memory.
+	Previous map[string]*Vertex
 }
 
 // NewGraph returns an instance of a Graph,
 // given a list of vertices.
 func NewGraph(vertices []*Vertex) *Graph {
-	return &Graph{Vertices: vertices}
+	return &Graph{Vertices: vertices, Previous: make(map[string]*Vertex)}
 }
 
 // PrintGraph is a helper function,
