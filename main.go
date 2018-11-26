@@ -24,5 +24,5 @@ func main() {
 
 	// TESTING
 	search.BellManford(graph.Vertices[0])
-	search.Dijkstra(graph.Vertices[0])
+	search.Dijkstra(graph.Vertices[0], "E")
 }
