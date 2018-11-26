@@ -10,7 +10,7 @@ import (
 type Graph struct {
 	Vertices []*Vertex
 	// Maps the string ID of a vertex to the
-	// vertex object in memory.
+	// previous vertex object in memory.
 	Previous map[string]*Vertex
 }
 
