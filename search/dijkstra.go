@@ -23,12 +23,14 @@ func (s *Search) Dijkstra(sourceVertex *graph.Vertex, targetID string) []string 
 	return s.dijkstra(sourceVertex, targetID, c)
 }
 
+// dijkstra is the implementation of the dijkstra shortest path algorithm.
+// This is a BFS algorith.
 func (s *Search) dijkstra(v *graph.Vertex, targetID string, c *cache) []string {
 	fmt.Printf("[Starting Dijkstra]\n")
 
 	// Loop through each vertex in the graph.
-	// Add each vertex to the map and set as
-	// infinite distance.
+	// Add each vertex to the distance  map and
+	// set as infinite distance.
 	for _, vertex := range s.Graph.Vertices {
 		c.Distance[vertex] = MaxInt
 	}
@@ -36,7 +38,7 @@ func (s *Search) dijkstra(v *graph.Vertex, targetID string, c *cache) []string {
 	// Set the source vertex's distance as 0.
 	c.Distance[v] = 0
 
-	// Push the vertex on to the queue.
+	// Push the source vertex on to the queue.
 	item := &Item{
 		value:    v,
 		priority: 0,
@@ -49,7 +51,7 @@ func (s *Search) dijkstra(v *graph.Vertex, targetID string, c *cache) []string {
 		// Pop an item off the queue.
 		poppedItem := heap.Pop(&c.Queue).(*Item)
 
-		// Cast the value to a Vertex.
+		// Cast the value of the popped item to a Vertex.
 		poppedVertex := poppedItem.value.(*graph.Vertex)
 		fmt.Printf("Popped vertex ID: %v\n", poppedVertex.ID)
 
@@ -101,9 +103,10 @@ func (s *Search) dijkstra(v *graph.Vertex, targetID string, c *cache) []string {
 }
 
 // findShortestPath is a helper function for djikstra. Since the Graph will have
-// an update map of Previous pointers, findShortestPath will follow the Previous
+// an updated map of Previous pointers, findShortestPath will follow the Previous
 // pointers from the target back to the source and return an array of IDs from
 // the perspective of Source -> Target.
+// NOTE: THIS ASSUMES ALL VERTEXES ARE CONNECTED AND NO CYCLES.
 func (s *Search) findShortestPath(source, target string) []string {
 	// NOTE: (ccdle12)
 	// This will return the path given an ID
@@ -114,12 +117,13 @@ func (s *Search) findShortestPath(source, target string) []string {
 	current := target
 
 	for current != source {
-		// Add current to the Path.
+		// Add current to head of the path slice.
 		path = append([]string{current}, path...)
+		// Set current to the previous pointer.
 		current = s.Graph.Previous[current].ID
 	}
 
-	// Add the source as the first vertex in the path.
+	// Add the source vertex as the first vertex in the path.
 	path = append([]string{source}, path...)
 
 	return path
